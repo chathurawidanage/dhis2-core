@@ -102,7 +102,7 @@ public class DateUtils
         .appendSeconds().appendSuffix( " s" ).appendSeparator( ", " ).toFormatter();
 
     private static final DateTimeFormatter MEDIUM_DATE_FORMAT = DateTimeFormat.forPattern( "yyyy-MM-dd" );
-    private static final DateTimeFormatter LONG_DATE_FORMAT = DateTimeFormat.forPattern( "yyyy-MM-dd'T'HH:mm:ss" );
+    private static final DateTimeFormatter LONG_DATE_FORMAT = DateTimeFormat.forPattern( "yyyy-MM-dd'T'HH:mm:ss.SSSZ" );//yyyy-MM-dd'T'HH:mm:ss
     private static final DateTimeFormatter HTTP_DATE_FORMAT = DateTimeFormat.forPattern( "EEE, dd MMM yyyy HH:mm:ss 'GMT'" ).withLocale( Locale.ENGLISH );
     private static final DateTimeFormatter TIMESTAMP_UTC_TZ_FORMAT = DateTimeFormat.forPattern( "yyyy-MM-dd'T'HH:mm:ss.SSSZ" ).withZoneUTC();
 
@@ -128,7 +128,8 @@ public class DateUtils
      */
     public static String getIso8601NoTz( Date date )
     {
-        return date != null ? ISO8601_NO_TZ.print( new DateTime( date ) ) : null;
+        return  getIso8601(date);
+        //return date != null ? ISO8601_NO_TZ.print( new DateTime( date ) ) : null;
     }
 
     /**
